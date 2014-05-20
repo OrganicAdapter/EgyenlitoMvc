@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NewspaperModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="NewspaperModelStoreContainer">
+    <EntitySet Name="Newspapers" EntityType="NewspaperModel.Store.Newspapers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Articles" EntityType="NewspaperModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="NewspaperArticle" Association="NewspaperModel.Store.NewspaperArticle">
+      <End Role="Newspaper" EntitySet="Newspapers" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Newspapers">
+    <Key>
+      <PropertyRef Name="NewspaperId" />
+    </Key>
+    <Property Name="NewspaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" />
+    <Property Name="Pages" Type="int" Nullable="false" />
+    <Property Name="ReleaseDate" Type="nvarchar" Nullable="false" />
+    <Property Name="UploadDate" Type="nvarchar" Nullable="false" />
+    <Property Name="CoverUri" Type="nvarchar" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="ArticleId" />
+    </Key>
+    <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" Nullable="false" />
+    <Property Name="PdfUri" Type="nvarchar" Nullable="false" />
+    <Property Name="NewspaperId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="NewspaperArticle">
+    <End Role="Newspaper" Type="NewspaperModel.Store.Newspapers" Multiplicity="1" />
+    <End Role="Article" Type="NewspaperModel.Store.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Newspaper">
+        <PropertyRef Name="NewspaperId" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="NewspaperId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="NewspaperModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="NewspaperModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Newspapers" EntityType="NewspaperModel.Newspaper" />
+          <EntitySet Name="Articles" EntityType="NewspaperModel.Article" />
+          <AssociationSet Name="NewspaperArticle" Association="NewspaperModel.NewspaperArticle">
+            <End Role="Newspaper" EntitySet="Newspapers" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Newspaper">
+          <Key>
+            <PropertyRef Name="NewspaperId" />
+          </Key>
+          <Property Type="Int32" Name="NewspaperId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="Int32" Name="Pages" Nullable="false" />
+          <Property Type="String" Name="ReleaseDate" Nullable="false" />
+          <Property Type="String" Name="UploadDate" Nullable="false" />
+          <Property Type="String" Name="CoverUri" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="NewspaperModel.NewspaperArticle" FromRole="Newspaper" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Type="Int32" Name="ArticleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Author" Nullable="false" />
+          <Property Type="String" Name="PdfUri" Nullable="false" />
+          <NavigationProperty Name="Newspaper" Relationship="NewspaperModel.NewspaperArticle" FromRole="Article" ToRole="Newspaper" />
+          <Property Type="Int32" Name="NewspaperId" Nullable="false" />
+        </EntityType>
+        <Association Name="NewspaperArticle">
+          <End Type="NewspaperModel.Newspaper" Role="Newspaper" Multiplicity="1" />
+          <End Type="NewspaperModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Newspaper">
+              <PropertyRef Name="NewspaperId" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="NewspaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NewspaperModelStoreContainer" CdmEntityContainer="NewspaperModelContainer">
+    <EntitySetMapping Name="Newspapers">
+      <EntityTypeMapping TypeName="IsTypeOf(NewspaperModel.Newspaper)">
+        <MappingFragment StoreEntitySet="Newspapers">
+          <ScalarProperty Name="NewspaperId" ColumnName="NewspaperId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+          <ScalarProperty Name="CoverUri" ColumnName="CoverUri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="IsTypeOf(NewspaperModel.Article)">
+        <MappingFragment StoreEntitySet="Articles">
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="PdfUri" ColumnName="PdfUri" />
+          <ScalarProperty Name="NewspaperId" ColumnName="NewspaperId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

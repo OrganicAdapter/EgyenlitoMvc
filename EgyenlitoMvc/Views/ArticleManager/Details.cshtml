@@ -1,0 +1,35 @@
+﻿@model EgyenlitoMvc.Models.Article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Részletek</h2>
+
+<fieldset>
+    <legend>Cikk</legend>
+
+    <div class="display-label">Cím</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Szerző</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">PDF</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PdfUri)
+    </div>
+
+    <div class="display-label">Újság</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Newspaper.Title)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Szerkesztés", "Edit", new { id=Model.ArticleId }) |
+    @Html.ActionLink("Vissza", "Index")
+</p>

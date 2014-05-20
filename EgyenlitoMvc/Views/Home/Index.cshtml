@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@if (Request.IsAuthenticated)
+{
+<h2>Leírás</h2>
+
+<h3>Újság</h3>
+    <table>
+        <tr>
+            <td> Cím </td>
+            <td> A gazdagoknak mintha hályog nőne a szemén </td>
+        </tr>
+        <tr>
+            <td> Oldalszám </td>
+            <td> 43 </td>
+        </tr>
+        <tr>
+            <td> Kiadás dátuma </td>
+            <td> 2013 December </td>
+        </tr>
+        <tr>
+            <td> Feltöltés időpontja </td>
+            <td> 2013.12.09. 11:28 </td>
+        </tr>
+        <tr>
+            <td> Borító </td>
+            <td> http://ujegyenlito.hu/wp-content/uploads/2013/12/bor%C3%ADt%C3%B3.jpg </td>
+        </tr>
+    </table>
+
+<h3> Cikk </h3>
+    <table>
+        <tr>
+            <td> Név </td>
+            <td> Egyszer kacsasültet enni </td>
+        </tr>
+        <tr>
+            <td> Szerző </td>
+            <td> Tanács István </td>
+        </tr>
+        <tr>
+            <td> PDF </td>
+            <td> http://ujegyenlito.hu/wp-content/uploads/2014/04/zan%C3%A1cs.pdf </td>
+        </tr>
+    </table>
+}

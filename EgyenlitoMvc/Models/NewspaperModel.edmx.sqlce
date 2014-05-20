@@ -1,0 +1,83 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 05/19/2014 18:18:19
+-- Generated from EDMX file: D:\AspNet\EgyenlitoMvc\EgyenlitoMvc\Models\NewspaperModel.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Newspapers'
+CREATE TABLE [Newspapers] (
+    [NewspaperId] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(4000)  NOT NULL,
+    [Pages] int  NOT NULL,
+    [ReleaseDate] nvarchar(4000)  NOT NULL,
+    [UploadDate] nvarchar(4000)  NOT NULL,
+    [CoverUri] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- Creating table 'Articles'
+CREATE TABLE [Articles] (
+    [ArticleId] int IDENTITY(1,1) NOT NULL,
+    [Title] nvarchar(4000)  NOT NULL,
+    [Author] nvarchar(4000)  NOT NULL,
+    [PdfUri] nvarchar(4000)  NOT NULL,
+    [NewspaperId] int  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [NewspaperId] in table 'Newspapers'
+ALTER TABLE [Newspapers]
+ADD CONSTRAINT [PK_Newspapers]
+    PRIMARY KEY ([NewspaperId] );
+GO
+
+-- Creating primary key on [ArticleId] in table 'Articles'
+ALTER TABLE [Articles]
+ADD CONSTRAINT [PK_Articles]
+    PRIMARY KEY ([ArticleId] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- Creating foreign key on [NewspaperId] in table 'Articles'
+ALTER TABLE [Articles]
+ADD CONSTRAINT [FK_NewspaperArticle]
+    FOREIGN KEY ([NewspaperId])
+    REFERENCES [Newspapers]
+        ([NewspaperId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_NewspaperArticle'
+CREATE INDEX [IX_FK_NewspaperArticle]
+ON [Articles]
+    ([NewspaperId]);
+GO
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------

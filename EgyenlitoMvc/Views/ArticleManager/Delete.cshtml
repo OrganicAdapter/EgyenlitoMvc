@@ -1,0 +1,38 @@
+﻿@model EgyenlitoMvc.Models.Article
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Törlés</h2>
+
+<h3>Biztosan törölni szeretnéd ezt a cikket?</h3>
+<fieldset>
+    <legend>Cikk</legend>
+
+    <div class="display-label">Cím</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Szerző</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Author)
+    </div>
+
+    <div class="display-label">PDF</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PdfUri)
+    </div>
+
+    <div class="display-label">Újság</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Newspaper.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Törlés" /> |
+        @Html.ActionLink("Vissza", "Index")
+    </p>
+}

@@ -1,0 +1,43 @@
+﻿@model EgyenlitoMvc.Models.Newspaper
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Törlés</h2>
+
+<h3>Biztosan törölni szeretnéd ezt az újságot?</h3>
+<fieldset>
+    <legend>Újság</legend>
+
+    <div class="display-label">Cím</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Oldalszám</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pages)
+    </div>
+
+    <div class="display-label">Kiadás dátuma</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="display-label">Feltöltés időpontja</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UploadDate)
+    </div>
+
+    <div class="display-label">Borító</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoverUri)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Törlés" /> 
+        @Html.ActionLink("Vissza", "Index")
+    </p>
+}

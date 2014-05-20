@@ -1,0 +1,40 @@
+﻿@model EgyenlitoMvc.Models.Newspaper
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Részletek</h2>
+
+<fieldset>
+    <legend>Újság</legend>
+
+    <div class="display-label">Cím</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">Oldalszám</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pages)
+    </div>
+
+    <div class="display-label">Kiadás dátuma</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="display-label">Feltöltés időpontja</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UploadDate)
+    </div>
+
+    <div class="display-label">Borító</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CoverUri)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Szerkesztés", "Edit", new { id=Model.NewspaperId }) |
+    @Html.ActionLink("Vissza", "Index")
+</p>

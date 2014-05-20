@@ -1,0 +1,59 @@
+﻿@model EgyenlitoMvc.Models.Article
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Szerkesztés</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Cikk</legend>
+
+        @Html.HiddenFor(model => model.ArticleId)
+
+        <div class="editor-label">
+            @Html.Label("Cím")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Szerző")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Author)
+            @Html.ValidationMessageFor(model => model.Author)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("PDF")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PdfUri)
+            @Html.ValidationMessageFor(model => model.PdfUri)
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Újság")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("NewspaperId", String.Empty)
+            @Html.ValidationMessageFor(model => model.NewspaperId)
+        </div>
+
+        <p>
+            <input type="submit" value="Mentés" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Vissza", "Index")
+</div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EgyenlitoMvc.Models.Newspaper>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Újságok</h2>
+
+<p>
+    @Html.ActionLink("Új újság", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Cím
+        </th>
+        <th>
+            Oldalszám
+        </th>
+        <th>
+            Kiadás dátuma
+        </th>
+        <th>
+            Feltöltés időpontja
+        </th>
+        <th>
+            Borító
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pages)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UploadDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoverUri)
+        </td>
+        <td>
+            @Html.ActionLink("Szerkesztés", "Edit", new { id=item.NewspaperId }) |
+            @Html.ActionLink("Részletek", "Details", new { id=item.NewspaperId }) |
+            @Html.ActionLink("Törlés", "Delete", new { id=item.NewspaperId })
+        </td>
+    </tr>
+}
+
+</table>
