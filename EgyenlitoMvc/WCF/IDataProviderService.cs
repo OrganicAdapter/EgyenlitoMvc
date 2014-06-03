@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace EgyenlitoMvc.WCF
@@ -11,10 +12,13 @@ namespace EgyenlitoMvc.WCF
     public interface IDataProviderService
     {
         [OperationContract]
+        [WebGet(UriTemplate = "GetNewspapers")]
         string GetNewspapers();
         [OperationContract]
+        [WebGet(UriTemplate = "GetAllArticles")]
         string GetAllArticles();
         [OperationContract]
+        [WebGet(UriTemplate = "GetArticles/?key={newspaperId}")]
         string GetArticles(int newspaperId);
     }
 }
