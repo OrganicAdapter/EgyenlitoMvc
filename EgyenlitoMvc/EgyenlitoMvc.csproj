@@ -138,6 +138,10 @@
       <DependentUpon>DataProviderService.svc</DependentUpon>
     </Compile>
     <Compile Include="WCF\IDataProviderService.cs" />
+    <Compile Include="WCF\IWinDataProviderService.cs" />
+    <Compile Include="WCF\WinDataProviderService.svc.cs">
+      <DependentUpon>WinDataProviderService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DefaultDb.sdf" />
@@ -226,7 +230,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="WCF\DataProviderService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="WCF\WinDataProviderService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -284,11 +291,12 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>5160</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:40656/</IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
