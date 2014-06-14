@@ -1,0 +1,25 @@
+﻿@model EgyenlitoMvc.Models.Upholder
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Upholder</legend>
+
+    <div class="display-label">Logo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Logo)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UpholderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

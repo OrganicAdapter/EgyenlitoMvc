@@ -106,14 +106,34 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleManagerController.cs" />
+    <Compile Include="Controllers\EventManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewspaperManagerController.cs" />
+    <Compile Include="Controllers\UpholderManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Article.cs">
       <DependentUpon>NewspaperModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>EventsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Newspaper.cs">
       <DependentUpon>NewspaperModel.tt</DependentUpon>
@@ -133,14 +153,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NewspaperModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Upholder.cs">
+      <DependentUpon>EventsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WCF\DataProviderService.svc.cs">
       <DependentUpon>DataProviderService.svc</DependentUpon>
     </Compile>
     <Compile Include="WCF\IDataProviderService.cs" />
     <Compile Include="WCF\IWinDataProviderService.cs" />
+    <Compile Include="WCF\IWinEventService.cs" />
     <Compile Include="WCF\WinDataProviderService.svc.cs">
       <DependentUpon>WinDataProviderService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="WCF\WinEventService.svc.cs">
+      <DependentUpon>WinEventService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +246,24 @@
       <LastGenOutput>NewspaperModel.cs</LastGenOutput>
     </Content>
     <Content Include="Models\NewspaperModel.edmx.sqlce" />
+    <EntityDeploy Include="Models\EventsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EventsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EventsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsModel.edmx</DependentUpon>
+      <LastGenOutput>EventsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EventsModel.edmx.diagram">
+      <DependentUpon>EventsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EventsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EventsModel.edmx</DependentUpon>
+      <LastGenOutput>EventsModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EventsModel.edmx.sqlce" />
     <None Include="Properties\PublishProfiles\AspHostPage.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -231,6 +276,7 @@
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="WCF\DataProviderService.svc" />
     <Content Include="WCF\WinDataProviderService.svc" />
+    <Content Include="WCF\WinEventService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -270,6 +316,16 @@
     <Content Include="Views\ArticleManager\Create.cshtml" />
     <Content Include="Views\ArticleManager\Edit.cshtml" />
     <Content Include="Views\ArticleManager\Delete.cshtml" />
+    <Content Include="Views\UpholderManager\Index.cshtml" />
+    <Content Include="Views\UpholderManager\Details.cshtml" />
+    <Content Include="Views\UpholderManager\Create.cshtml" />
+    <Content Include="Views\UpholderManager\Edit.cshtml" />
+    <Content Include="Views\UpholderManager\Delete.cshtml" />
+    <Content Include="Views\EventManager\Index.cshtml" />
+    <Content Include="Views\EventManager\Details.cshtml" />
+    <Content Include="Views\EventManager\Create.cshtml" />
+    <Content Include="Views\EventManager\Edit.cshtml" />
+    <Content Include="Views\EventManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

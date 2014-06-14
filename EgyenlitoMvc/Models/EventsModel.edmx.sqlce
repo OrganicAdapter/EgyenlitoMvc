@@ -1,0 +1,72 @@
+
+-- --------------------------------------------------
+-- Entity Designer DDL Script for SQL Server Compact Edition
+-- --------------------------------------------------
+-- Date Created: 06/14/2014 12:06:10
+-- Generated from EDMX file: C:\Users\Gergely\Documents\GitHub\EgyenlitoMvc\EgyenlitoMvc\Models\EventsModel.edmx
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing FOREIGN KEY constraints
+-- NOTE: if the constraint does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+
+-- --------------------------------------------------
+-- Dropping existing tables
+-- NOTE: if the table does not exist, an ignorable error will be reported.
+-- --------------------------------------------------
+
+    DROP TABLE [Events];
+GO
+    DROP TABLE [Upholders];
+GO
+
+-- --------------------------------------------------
+-- Creating all tables
+-- --------------------------------------------------
+
+-- Creating table 'Events'
+CREATE TABLE [Events] (
+    [EventId] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL,
+    [Description] nvarchar(4000)  NOT NULL,
+    [Link] nvarchar(4000)  NULL,
+    [Image] nvarchar(4000)  NULL,
+    [Video] nvarchar(4000)  NULL,
+    [Date] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'Upholders'
+CREATE TABLE [Upholders] (
+    [UpholderId] int IDENTITY(1,1) NOT NULL,
+    [Logo] nvarchar(4000)  NOT NULL,
+    [Name] nvarchar(4000)  NOT NULL
+);
+GO
+
+-- --------------------------------------------------
+-- Creating all PRIMARY KEY constraints
+-- --------------------------------------------------
+
+-- Creating primary key on [EventId] in table 'Events'
+ALTER TABLE [Events]
+ADD CONSTRAINT [PK_Events]
+    PRIMARY KEY ([EventId] );
+GO
+
+-- Creating primary key on [UpholderId] in table 'Upholders'
+ALTER TABLE [Upholders]
+ADD CONSTRAINT [PK_Upholders]
+    PRIMARY KEY ([UpholderId] );
+GO
+
+-- --------------------------------------------------
+-- Creating all FOREIGN KEY constraints
+-- --------------------------------------------------
+
+-- --------------------------------------------------
+-- Script has ended
+-- --------------------------------------------------
