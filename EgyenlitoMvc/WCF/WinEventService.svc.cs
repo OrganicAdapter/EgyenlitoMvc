@@ -22,7 +22,7 @@ namespace EgyenlitoMvc.WCF
 
         public string GetEvents()
         {
-            var events = Entities.Events.OrderBy((x) => x.Date).Take(5).ToList();
+            var events = Entities.Events.OrderBy((x) => x.Date).Take(10).ToList();
 
             var str = JsonConvert.SerializeObject(events);
             return str;

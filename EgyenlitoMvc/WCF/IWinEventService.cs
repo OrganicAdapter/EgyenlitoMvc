@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace EgyenlitoMvc.WCF
@@ -11,8 +12,10 @@ namespace EgyenlitoMvc.WCF
     [ServiceContract]
     public interface IWinEventService
     {
+        [WebGet(UriTemplate="GetEvents")]
         [OperationContract]
         string GetEvents();
+        [WebGet(UriTemplate="GetUpholders")]
         [OperationContract]
         string GetUpholders();
     }
